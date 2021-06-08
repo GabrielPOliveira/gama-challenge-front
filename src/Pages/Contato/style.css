@@ -1,0 +1,21 @@
+form{
+    text-align: end;
+}
+
+input, textarea{
+    width: 100%;
+    border: #d40054 1px solid;
+    border-radius: 1.5vw;
+    padding: 10px;
+    margin-bottom: 10px;
+    resize: none;
+}
+
+label{
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.labels{
+    text-align: start !important;
+}

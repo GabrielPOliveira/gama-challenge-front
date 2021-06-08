@@ -1,0 +1,7 @@
+.start {
+    text-align: start;
+}
+
+#root > div > section > div > form{
+    margin-bottom: 8vw;
+}

@@ -1,0 +1,13 @@
+input[type='checkbox']{
+    width: unset;
+    margin: 5px;
+}
+
+form.formCadastro > div:nth-child(1){
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+form.formCadastro > div:nth-child(1) > div:nth-child(n){
+    margin: 5px;
+}

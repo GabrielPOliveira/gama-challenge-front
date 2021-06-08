@@ -1,0 +1,50 @@
+a svg {
+    width: 3vw;
+    height: 3vw;
+    background: #d40054;
+    padding: .7vw;
+    fill: #fff;
+    margin: 0 1vw;
+    border-radius: 50vw;
+}
+
+svg:hover {
+    -webkit-transition: background-color .5s ease-out;
+    -moz-transition: background-color .5s ease-out;
+    -o-transition: background-color .5s ease-out;
+    transition: background-color .5s ease-out;
+    background: #820034;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.footerContent{
+    margin: 3vw 0;
+}
+
+div.center p.center {
+    font-size: 1vw;
+}
+
+.logoDown {
+    width: 15vw;
+}
+
+ul a.menuBottom li {
+    font-size: 1.1vw;
+    font-weight: 500;
+}
+
+.none{
+    display: none;
+}
+
+footer > div > ul > a{
+    margin: 0 2vw;
+}

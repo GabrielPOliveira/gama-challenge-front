@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+    outline: unset;
+}
+
+header, footer {
+    margin: 2vw 5vw;
+}
+
+.logoUp {
+    width: 20vw;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li {
+    list-style: none;
+}
+
+nav a , li{
+    margin: 0 2vw;
+}
+
+header {
+    font-weight: 600;
+    font-size: 1.2vw;
+}
+
+button.entrarHeader {
+    background: #d40054;
+    color: #fff;
+}
+
+button.cadastrarHeader {
+    color: #d40054;
+    border: .1vw solid #d40054;
+    background: #fff;
+    transition: all .5s ease;
+}
+
+button.cadastrarHeader:hover {
+    color: #fff;
+    background: #d40054;
+}
+
+button:hover {
+    background: #A60043;
+}
+
+button, a {
+    cursor: pointer;
+}
+
+button, svg {
+    padding: 1vw 2vw;
+    border: unset;
+    margin: 0 1.2vw;
+}
+
+button, svg, a {
+    border-radius: 50vw;
+    font-weight: bold;
+    font-size: 1.2vw;
+    -webkit-transition: background-color .5s ease-out;
+    -moz-transition: background-color .5s ease-out;
+    -o-transition: background-color .5s ease-out;
+    transition: background-color .5s ease-out;
+}
+
+a {
+    text-decoration: unset;
+    color: unset;
+}
+
+@media(max-width: 767px) {}

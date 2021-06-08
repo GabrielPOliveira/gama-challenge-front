@@ -1,0 +1,69 @@
+.imgPages {
+    width: 40vw;
+}
+
+.spaceSections {
+    padding: 5vw 0;
+}
+
+div > section:nth-child(2){
+    background: whitesmoke;
+}
+
+.recuo{
+    padding: 5vw 7vw;
+}
+
+.half {
+    width: 47%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+h1, h2, h3, h4, p {
+    color: #13132B;
+}
+
+h1 {
+    font-size: 3.5vw;
+}
+
+p {
+    font-size: 1.5vw;
+}
+
+.buttonA:hover {
+    background: #A60043;
+}
+
+.buttonA {
+    margin: 2vw 0;
+    background: #d40054;
+    color: #fff;
+    padding: 1vw 2vw;
+    border: unset;
+    border-radius: 50vw;
+    font-weight: bold;
+    font-size: 1.2vw;
+    text-transform: uppercase;
+    -webkit-transition: background-color .5s ease-out;
+    -moz-transition: background-color .5s ease-out;
+    -o-transition: background-color .5s ease-out;
+    transition: background-color .5s ease-out;
+}
+
+.banner {
+    background: linear-gradient(180deg, #D40054 0%, #730036 100%);
+    padding: 5vw 0;
+}
+
+.banner *{
+    color: #fff;
+}
+
+.banner a{
+    background: transparent;
+    border: white 1px solid;
+}

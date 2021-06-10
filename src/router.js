@@ -15,6 +15,8 @@ import LoginPrivado from "./Pages/LoginPrivado";
 // import Cadastro from "./Pages/Cadastro";
 import NotFound from "./Pages/NotFound";
 import Dashboard from "./Pages/Dashboard";
+import Pacientes from "./Pages/Pacientes";
+
 
 
 function Routes() {
@@ -29,6 +31,7 @@ function Routes() {
                 <Route path="/login" exact component={Login} />
                 <Route path="/loginPrivado" exact component={LoginPrivado} />
                 <Route path="/dashboard" exact component={Dashboard} />
+                <Route path="/pacientes" exact component={Pacientes} />
                 <Route component={NotFound} />
             </Switch>
         </Router>

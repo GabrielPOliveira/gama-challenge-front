@@ -13,6 +13,7 @@ import '../../assets/css/pe-icon-7-stroke.css';
 export default function HeaderPrivate() {
     // JS
     let history = useHistory();
+    
     return (
         <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
 
@@ -23,7 +24,7 @@ export default function HeaderPrivate() {
 
                 <ul class="nav">
                     <li class="active">
-                        <a href="dashboard.html">
+                        <a href="/dashboard">
                             <i class="pe-7s-graph"></i>
                             <p>Bem-vindo</p>
                         </a>
@@ -35,20 +36,20 @@ export default function HeaderPrivate() {
                         </a>
                     </li>
                     <li>
-                        <a href="table.html">
+                        <a href="/pacientes">
                             <i class="pe-7s-note2"></i>
-                            <p>Gerenciar Paciente</p>
+                            <p>Gerenciar Pacientes</p>
                         </a>
                     </li>
                     <li>
                         <a href="typography.html">
-                            <i class="pe-7s-news-paper"></i>
+                            <i class="pe-7s-users"></i>
                             <p>Gerenciar Medicos</p>
                         </a>
                     </li>
                     <li>
                         <a href="icons.html">
-                            <i class="pe-7s-science"></i>
+                            <i class="pe-7s-date"></i>
                             <p>Agendamentos</p>
                         </a>
                     </li>

@@ -7,3 +7,7 @@ export const isLogged = () => {
 
     return false;
 }
+
+export const Logout = () => {
+    sessionStorage.removeItem('Token');
+}

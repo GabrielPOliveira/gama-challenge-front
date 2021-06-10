@@ -14,6 +14,7 @@ import '../../assets/css/light-bootstrap-dashboard.css';
 import '../../assets/css/pe-icon-7-stroke.css';
 
 import "./style.css";
+import { Logout } from "../../Utils";
 
 export default function Dash() {
     // JS
@@ -151,7 +152,7 @@ export default function Dash() {
                                         </ul>
                                     </li>
                                     <li>
-                                        <Link to="/">Sair</Link>
+                                        <Link to="/" onClick={Logout}>Sair</Link>
                                     </li>
                                     <li class="separator hidden-lg"></li>
                                 </ul>

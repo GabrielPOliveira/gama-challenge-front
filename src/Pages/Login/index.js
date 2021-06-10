@@ -4,12 +4,20 @@ import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 import Bar from "../../Components/Bar";
 import api from '../../services/api'
+import { toast } from "react-toastify";
 
 import './style.css';
 
-export default function Login() {
+export default function Login(props) {
+
+    const initialState = {
+        login: "",
+        password: ""
+    }
     
-    const [user, setUser] = useState({login: "", password: ""});
+    const [user, setUser] = useState(initialState);
+
+    let history = useHistory();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -19,17 +27,25 @@ export default function Login() {
         }
 
         const res = await api.post('/logar', creds);
-        
-        setUser({login: "", password: ""});
-
+    
         if (res.status === 200){
-
             sessionStorage.setItem("Token", res.data.token);
-            window.location = '/dashboard'
-        } else {
-            alert(res.data.error);
-        }
 
+            toast.success(`Seja bem vindo, ${user.login}`, {
+                onClose: () => {history.push('/dashboard')},
+                position: "top-center",
+                autoClose: 1500,
+                pauseOnHover: false
+            })
+        } else {
+            toast.error(res.data.error, {
+                position: "top-center",
+                autoClose: 3000,
+                pauseOnHover: false
+            });
+        }
+        
+        setUser(initialState);
     }
 
     const handleChange = (event) => {
@@ -39,7 +55,6 @@ export default function Login() {
         })
     }
 
-    let history = useHistory();
     return (
         <div>
             <Header />

@@ -49,8 +49,8 @@ export default function Login() {
                     <Bar />
                     <form onSubmit={handleSubmit}>
                         <div className="start">
-                            <label for="email">E-mail</label>
-                            <input type="text" id="email" name= "login" value={user.login} onChange={handleChange} required />
+                            <label for="login">Login</label>
+                            <input type="text" id="login" name= "login" value={user.login} onChange={handleChange} required />
                             <label for="pass">Senha</label>
                             <input type="password" id="pass" name="password" value={user.password} onChange={handleChange} required />
                         </div>

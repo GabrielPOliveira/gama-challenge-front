@@ -15,6 +15,7 @@ import LoginPrivado from "./Pages/LoginPrivado";
 // import Cadastro from "./Pages/Cadastro";
 import NotFound from "./Pages/NotFound";
 import Dashboard from "./Pages/Dashboard";
+import PrivateRoute from "./Components/PrivateRoute";
 
 
 function Routes() {
@@ -28,7 +29,7 @@ function Routes() {
                 <Route path="/contato" exact component={Contato} />
                 <Route path="/login" exact component={Login} />
                 <Route path="/loginPrivado" exact component={LoginPrivado} />
-                <Route path="/dashboard" exact component={Dashboard} />
+                <PrivateRoute path="/dashboard" exact component={Dashboard} />
                 <Route component={NotFound} />
             </Switch>
         </Router>

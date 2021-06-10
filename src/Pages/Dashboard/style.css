@@ -9,3 +9,7 @@
 body{
     background: white;
 }
+
+.sidebar .nav p{
+    color: white;
+}

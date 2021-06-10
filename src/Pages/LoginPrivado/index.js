@@ -5,7 +5,6 @@ import Footer from "../../Components/Footer";
 import Bar from "../../Components/Bar";
 
 export default function Login() {
-    // JS
     let history = useHistory();
     return (
         <div>

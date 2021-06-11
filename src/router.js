@@ -16,6 +16,7 @@ import LoginPrivado from "./Pages/LoginPrivado";
 import NotFound from "./Pages/NotFound";
 import Dashboard from "./Pages/Dashboard";
 import Pacientes from "./Pages/Pacientes";
+import Agendamentos from "./Pages/Agendamentos"
 
 import PrivateRoute from "./Components/PrivateRoute";
 
@@ -33,6 +34,7 @@ function Routes() {
                               
                 <PrivateRoute path="/dashboard" exact component={Dashboard} />
                 <PrivateRoute path="/pacientes" exact component={Pacientes} />
+                <PrivateRoute path="/agendamentos" exact component={Agendamentos} />
                 <Route component={NotFound} />
             </Switch>
         </Router>

@@ -3,7 +3,7 @@ import { useHistory, Link } from "react-router-dom";
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 import Bar from "../../Components/Bar";
-import api from '../../services/api'
+import {backAxios} from '../../services/api'
 import { toast } from "react-toastify";
 
 import './style.css';
@@ -26,7 +26,7 @@ export default function Login(props) {
             password: user.password
         }
 
-        const res = await api.post('/logar', creds);
+        const res = await backAxios.post('/logar', creds);
     
         if (res.status === 200){
             sessionStorage.setItem("Token", res.data.token);

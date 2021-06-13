@@ -18,6 +18,10 @@ import Dashboard from "./Pages/Dashboard";
 import Pacientes from "./Pages/Pacientes";
 import PacienteUpdate from "./Pages/Pacientes/update";
 import PacienteProntuario from "./Pages/Pacientes/prontuario";
+import Medicos from "./Pages/Medicos";
+import MedicosCreate from "./Pages/Medicos/create";
+import MedicosUpdate from "./Pages/Medicos/update";
+
 
 
 
@@ -39,6 +43,10 @@ function Routes() {
                 <PrivateRoute path="/pacientes" exact component={Pacientes} />
                 <PrivateRoute path="/paciente/alterar" exact component={PacienteUpdate} />
                 <PrivateRoute path="/paciente/prontuario" exact component={PacienteProntuario} />
+                <PrivateRoute path="/medicos" exact component={Medicos} />
+                <PrivateRoute path="/medico/criar" exact component={MedicosCreate} />
+                <PrivateRoute path="/medico/alterar" exact component={MedicosUpdate} />
+
 
 
                 <Route component={NotFound} />

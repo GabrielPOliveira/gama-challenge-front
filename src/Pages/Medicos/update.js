@@ -1,16 +1,18 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useHistory, Link } from "react-router-dom";
-import { ErrorMessage, Formik, Form, Field } from 'formik';
+import Footer from "../../Components/Footer";
 import HeadersPrivate from "../../Components/HeaderPrivate";
 import NaviBar from "../../Components/NaviBar";
-import {backAPI, viacepAPI} from '../../services/api';
+import { ErrorMessage, Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import {backAPI, viacepAPI} from '../../services/api';
 import { toast } from "react-toastify";
 
-export default function FormPacientesUpdate() {
+export default function MedicosUpdate() {
 
-    
     let history = useHistory();
+
+    console.log(history.location.detail);
 
     const token = sessionStorage.getItem("Token");  
 
@@ -18,15 +20,15 @@ export default function FormPacientesUpdate() {
         headers: {Authorization: `Bearer ${token}`}
     }
 
-    const [ bloodtypeOptions, setbloodtypeOptions ] = useState({dataBloodtypes: []})
+    const [ specialityOptions, setSpecialityOptions ] = useState({dataSpeciality: []})
 
     const initialValues = {       
         name: history.location.state.detail.name,
-        cpf: history.location.state.detail.cpf,
+        register: history.location.state.detail.register,
         phone: history.location.state.detail.phone,
         cellphone: history.location.state.detail.cellphone,
         email: history.location.state.detail.email,
-        bloodtypesId: history.location.state.detail.bloodtypesId,
+        specialitiesId: history.location.state.detail.specialitiesId,
         addressId: history.location.state.detail.addressId,
         zip_code: history.location.state.detail.Address.zip_code,
         address: history.location.state.detail.Address.address,
@@ -34,15 +36,15 @@ export default function FormPacientesUpdate() {
         complement: history.location.state.detail.Address.complement,
         neighborhood: history.location.state.detail.Address.neighborhood,
         city: history.location.state.detail.Address.city,
-        state: history.location.state.detail.Address.state
+        state: history.location.state.detail.Address.state,        
     }
     const validations = Yup.object().shape({
         name: Yup.string().required('É necessário informar o nome'),
-        cpf: Yup.string().required('É necessário informar um CPF válido'),
+        register: Yup.string().required('É necessário informar um CPF válido'),
         phone: Yup.string().nullable(),
         cellphone: Yup.string().nullable(),
         email: Yup.string().email('É necessário informar um e-mail válido').nullable(),
-        bloodtypesId: Yup.number().required(),
+        specialitiesId: Yup.number().required(),
 
         zip_code: Yup.string().required('É necessário informar um CEP'),
         address: Yup.string().required('É necessário informar o endereço'),
@@ -52,17 +54,19 @@ export default function FormPacientesUpdate() {
         city: Yup.string().required('É necessário informar a cidade'),
         state: Yup.string().required('É necessário informar o estado'),                
     });
-    
+
     const handleSubmit = values => {
+        values.register = values.register.toUpperCase();
+
         alert(JSON.stringify(values));
         let uuid = history.location.state.detail.uuid;
         
-        backAPI.put(`/clientes/${uuid}`, values, config).then(
+        backAPI.put(`/medicos/${uuid}`, values, config).then(
             response => {
                 //console.log(response.status);
                 if(response.status === 201){                    
-                    toast.success(`Dados do Paciente Alterado com Sucesso !`, { 
-                        onClose: () => {history.push('/pacientes')},                                    
+                    toast.success(`Dados do Médico Alterado com Sucesso !`, { 
+                        onClose: () => {history.push('/medicos')},                                    
                         position: "top-right",
                         autoClose: 2000,
                         pauseOnHover: false
@@ -78,48 +82,51 @@ export default function FormPacientesUpdate() {
             }
         )
     }
-  
+
     function handleBlur(event, setFieldValue) {
-       let cep = event.replace(/[^0-9]/g, '');        
-       viacepAPI.get(cep+'/json/').then(
-           response => {                
-                if (response.status === 400){
-                    toast.error("Cep Inválido", {
-                        position: "top-right",
-                        autoClose: 3000,
-                        pauseOnHover: false
-                    });
-                }else if(response.data.erro == true){
-                    toast.error("Cep não encontrado", {
-                        position: "top-right",
-                        autoClose: 3000,
-                        pauseOnHover: false
-                    });
-                }else{                    
-                    setFieldValue('address', response.data.logradouro)
-                    setFieldValue('neighborhood', response.data.bairro)
-                    setFieldValue('city', response.data.localidade)
-                    setFieldValue('state', response.data.uf)                    
-                }
-           }
-       )
-        
+        let cep = event.replace(/[^0-9]/g, '');        
+        viacepAPI.get(cep+'/json/').then(
+            response => {                
+                 if (response.status === 400){
+                     toast.error("Cep Inválido", {
+                         position: "top-right",
+                         autoClose: 3000,
+                         pauseOnHover: false
+                     });
+                 }else if(response.data.erro == true){
+                     toast.error("Cep não encontrado", {
+                         position: "top-right",
+                         autoClose: 3000,
+                         pauseOnHover: false
+                     });
+                 }else{                    
+                     setFieldValue('address', response.data.logradouro)
+                     setFieldValue('neighborhood', response.data.bairro)
+                     setFieldValue('city', response.data.localidade)
+                     setFieldValue('state', response.data.uf)                    
+                 }
+            }
+        )
+         
+     }
+
+     function backListMedicos(){      
+        history.push('/medicos');
     }
 
-    function backListPacientes(){      
-        history.push('/pacientes');
-    }
+    
     useEffect(() => {      
-        backAPI.get('/tipos', config).then(
+        backAPI.get('/especialidades', config).then(
             response => {
                 console.log(response.data)                    
-                setbloodtypeOptions({dataBloodtypes: response.data});                           
+                setSpecialityOptions({dataSpeciality: response.data});                           
             }
           )
                
     },[]);
 
     return (
+
         <div>
             <div class="wrapper">
                 <HeadersPrivate />
@@ -127,11 +134,11 @@ export default function FormPacientesUpdate() {
                     <NaviBar />
                     <div class="content">
                         <div class="container-fluid">
-                            <div class="row">          
+                            <div class="row">    
                                 <div class="col-md-12">
                                     <div class="card">                
                                         <div class="card-header ">
-                                            <h4 class="card-title">Alterar  Paciente</h4>                                                
+                                            <h4 class="card-title">Cadastrar Novo Médico</h4>                                                
                                         </div>
                                         <div class="card-body"> 
 
@@ -146,9 +153,9 @@ export default function FormPacientesUpdate() {
                                                                     <ErrorMessage component="span" name="name" />                                                                     
                                                             </div>
                                                             <div class="col-md-6">                                
-                                                                    <label for="cpf" class="">CPF*</label>
-                                                                    <Field name="cpf" id="cpf" type="text" maxlength="11" className="form-control"/>
-                                                                    <ErrorMessage component="span" name="cpf" />
+                                                                    <label for="register" class="">Registro*</label>
+                                                                    <Field name="register" id="register" type="text" className="form-control"/>
+                                                                    <ErrorMessage component="span" name="register"/>
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -170,19 +177,19 @@ export default function FormPacientesUpdate() {
                                                                     <ErrorMessage component="span" name="email" />
                                                             </div>
                                                             <div class="col-md-6">                                
-                                                                    <label for="bloodtypesId" class="">Tipo Sanguíneo*</label>
-                                                                    <Field as='select' name="bloodtypesId" id="bloodtypesId" className="form-control">                                                                             
+                                                                    <label for="specialitiesId" class="">Especialidade*</label>
+                                                                    <Field as='select' name="specialitiesId" id="specialitiesId" className="form-control">                                                                             
                                                                         {                                                            
-                                                                            bloodtypeOptions.dataBloodtypes.map(option =>{                                                        
+                                                                            specialityOptions.dataSpeciality.map(option =>{                                                        
                                                                                 return(                                                                                                                     
                                                                                     <option key={option.id} value={option.id}>
-                                                                                        {option.type}
+                                                                                        {option.description}
                                                                                     </option>                                                              
                                                                                 )
                                                                             })
-                                                                        }
+                                                                        }                                                                       
                                                                     </Field>
-                                                                    <ErrorMessage component="span" name="bloodtypesId" />
+                                                                    <ErrorMessage component="span" name="specialitiesId" />
                                                             </div>
                                                         </div>
                                             
@@ -238,9 +245,11 @@ export default function FormPacientesUpdate() {
                                                             </div>
                                                         </div>
 
+                                                        
+
                                                         <div class="row col-md-12">
                                                             <button type="submit" class="btn btn-info btn-fill pull-right">Salvar</button>
-                                                            <button type="button" onClick={backListPacientes} class="btn btn-info btn-fill pull-right">Voltar</button>                        
+                                                            <button type="button" onClick={backListMedicos} class="btn btn-info btn-fill pull-right">Voltar</button>                        
                                                         </div>
                                                     </Form>
                                                 )}
@@ -248,12 +257,14 @@ export default function FormPacientesUpdate() {
                                         </div>  
                                     </div>
                                 </div>
-                            </div> 
-                        </div> 
-                    </div> 
-                </div> 
-            </div> 
-        </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+         </div>
+    </div>                
+
+
     );
 
 }

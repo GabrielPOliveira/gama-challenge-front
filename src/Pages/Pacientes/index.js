@@ -88,14 +88,7 @@ export default function Pacientes() {
                         <div class="container-fluid">
                             <div class="row">
     
-                            <input
-                                value={pacientes.dataPacientes.filterByText}
-                                name="filterByText"
-                                onChange={(e) => {
-                                    inputChange(e);
-                                }}
-                                placeholder="Pesquise pelo nome do paciente ..."
-                            />
+                           
 
                                 {formCreate ? (
                                     <div>
@@ -104,7 +97,14 @@ export default function Pacientes() {
                                     </div>
                                 ) : (
                                     <div class="col-md-12">
-
+                                         <input
+                                            value={pacientes.dataPacientes.filterByText}
+                                            name="filterByText"
+                                            onChange={(e) => {
+                                                inputChange(e);
+                                            }}
+                                            placeholder="Pesquise pelo nome do paciente ..."
+                                        />
                                         <div class="card strpied-tabled-with-hover">
                                             <div class="card-header ">
                                                 <h4 class="card-title">Pacientes</h4>

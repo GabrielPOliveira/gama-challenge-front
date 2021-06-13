@@ -1,0 +1,22 @@
+div.DraftEditor-root {
+    border: 1px solid #000;
+    background-color: #fff;
+    height: 500px;
+    width: auto;
+    overflow-y: auto;
+    border-radius: 10px;
+    
+}
+
+div.DraftEditor-editorContainer,
+div.public-DraftEditor-content {
+  height: 100%;
+}
+
+#butao {
+  margin-top: 10px;
+  float: right;
+  background: rgba(212,0,84, 0.8);
+  color: white;
+  font-weight: bold;
+}

@@ -59,7 +59,7 @@ export default function FormPacientesUpdate() {
         
         backAPI.put(`/clientes/${uuid}`, values, config).then(
             response => {
-                //console.log(response.status);
+                
                 if(response.status === 201){                    
                     toast.success(`Dados do Paciente Alterado com Sucesso !`, { 
                         onClose: () => {history.push('/pacientes')},                                    
@@ -111,8 +111,7 @@ export default function FormPacientesUpdate() {
     }
     useEffect(() => {      
         backAPI.get('/tipos', config).then(
-            response => {
-                console.log(response.data)                    
+            response => {                                  
                 setbloodtypeOptions({dataBloodtypes: response.data});                           
             }
           )

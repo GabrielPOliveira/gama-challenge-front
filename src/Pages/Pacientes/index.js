@@ -20,6 +20,7 @@ export default function Pacientes() {
 
     const [formCreate, setformCreate] = useState(false);
     const [pacientes, setPacientes] = useState({ dataPacientes: [] })
+    const [medicos, setMedicos] = useState([])
     
 
     function openForm() {        
@@ -27,7 +28,7 @@ export default function Pacientes() {
     }
 
     function UpdatePaciente(e){
-       // history.push('/update');
+             
        backAPI.get(`/cliente/${e}`, config).then(
                 response => {
                     history.push({
@@ -40,24 +41,36 @@ export default function Pacientes() {
     }
 
     function Prontuario(e){
-        //Implementar aqui o metodo de prontuario        
+        //Implementar aqui o metodo de prontuario      
+      
         backAPI.get(`/cliente/${e}/prontuario`, config).then(
             response => {
                 history.push({
                     pathname: '/paciente/prontuario',
-                    state: { detail: response.data, uuidPaciente: e },                    
+                    state: { detail: response.data, uuidPaciente: e, medicos: medicos.data },                    
                 });
             }
-    )
+        )
+      
 
     }
 
     useEffect(() => {
+
+        backAPI.get(`/medicos`, config).then(
+            response => {
+                setMedicos({data: response.data});                                              
+            }
+            
+        )
+        
         backAPI.get('/clientes', config).then(
             response => {
                 setPacientes({ dataPacientes: response.data });
             }
         )
+      
+
     }, []);
 
     const [Searchvalue, setState] = useState("") 

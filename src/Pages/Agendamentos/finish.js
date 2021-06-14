@@ -53,10 +53,9 @@ export default function FinishAgendamento(){
 
         if (res.status === 201){
             toast.success('Consulta realizada com sucesso', {
-                autoClose: 3000
+                onClose: () => {history.goBack()},
+                autoClose: 1500
             });
-            history.goBack();
-
             
         } else {
             toast.error('Não foi possível realizar a consulta', {

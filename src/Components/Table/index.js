@@ -250,11 +250,9 @@ function AppointTable() {
             });
     }, [])
 
-    const updateAppointment = async (index) => {
+    const updateAppointment = async (values) => {
         
-        const appointInfo = data[index];
-        
-        const res = await backAPI.get(`/consulta/${appointInfo.uuid}`, config);
+        const res = await backAPI.get(`/consulta/${values.uuid}`, config);
             
         history.push({
             pathname: '/agendamento/alterar',
@@ -263,10 +261,8 @@ function AppointTable() {
 
     }
 
-    const doAppointment = async (index) => {
-        const appointInfo = data[index];
-    
-        const res = await backAPI.get(`/consulta/${appointInfo.uuid}`, config);
+    const doAppointment = async (values) => {    
+        const res = await backAPI.get(`/consulta/${values.uuid}`, config);
         
         history.push({
             pathname: '/agendamento/realizar',
@@ -321,8 +317,8 @@ function AppointTable() {
                 "Cell": ({row}) => {
                     return (
                         <>
-                        <button onClick={async () => {updateAppointment(row.index); console.log(data)}} style={{margin: "5px 10px 5px 0"}}>Alterar consulta</button>
-                        <button onClick={() => doAppointment(row.index)}>Realizar consulta</button>
+                        <button onClick={async () => {updateAppointment(row.original)}} style={{margin: "5px 10px 5px 0"}}>Alterar consulta</button>
+                        <button onClick={() => doAppointment(row.original)}>Realizar consulta</button>
                         </>
                     )
                 },

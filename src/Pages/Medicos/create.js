@@ -59,7 +59,7 @@ export default function MedicosCreate() {
 
     const handleSubmit = values => {
         values.register = values.register.toUpperCase();
-        alert(JSON.stringify(values));
+       
         backAPI.post('/medicos', values, config).then(
             response => {
                 console.log(response.status);

@@ -49,7 +49,7 @@ export default function FormPacientes() {
     });
     
     const handleSubmit = values => {
-        alert(JSON.stringify(values));
+        
         backAPI.post('/clientes', values, config).then(
             response => {
                 console.log(response.status);

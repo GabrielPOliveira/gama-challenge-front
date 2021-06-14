@@ -77,7 +77,8 @@ export default function UpdateAgendamento() {
         if (res.status === 200){
             toast.success('Agendamento alterado com sucesso', {
                 autoClose: 3000
-            })
+            });
+            history.goBack();
         } else {
             toast.error('Não foi possível alterar o agendamento', {
                 autoClose: 3000
@@ -148,14 +149,14 @@ export default function UpdateAgendamento() {
                                                             <Field as="select" name="appointments_statusId" id="status" className="form-control">
                                                                 <option value="" label="Selecione um status" />
                                                                 <option key={1} value={1}> Agendado </option>
-                                                                <option key={2} value={2}> Cancelado </option>
+                                                                <option key={2} value={3}> Cancelado </option>
                                                             </Field>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <label for="data" class="">Data</label>
-                                                            <Field name="scheduling_day" id="scheduling_day" type="date" className="form-control" />
+                                                            <Field name="scheduling_day" id="scheduling_day" type="date" className="form-control" min={new Date().toISOString().slice(0, 10)} />
                                                             <ErrorMessage component="span" name="scheduling_day" />
                                                         </div>
                                                         <div class="col-md-6">
@@ -168,6 +169,7 @@ export default function UpdateAgendamento() {
 
                                                     <div class="row col-md-12">
                                                         <button type="submit" class="btn btn-info btn-fill pull-right">Atualizar</button>
+                                                        <button type="button" onClick={() => history.goBack()} class="btn btn-info btn-fill pull-right">Voltar</button>
                                                     </div>
 
                                                 </Form>

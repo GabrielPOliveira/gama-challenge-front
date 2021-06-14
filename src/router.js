@@ -19,6 +19,7 @@ import Pacientes from "./Pages/Pacientes";
 import Agendamentos from "./Pages/Agendamentos"
 import AgendamentoUpdate from "./Pages/Agendamentos/update";
 import AgendamentoConcluir from './Pages/Agendamentos/finish'
+import AgendamentoCriar from "./Pages/Agendamentos/create";
 
 import PrivateRoute from "./Components/PrivateRoute";
 
@@ -37,8 +38,9 @@ function Routes() {
                 <PrivateRoute path="/dashboard" exact component={Dashboard} />
                 <PrivateRoute path="/pacientes" exact component={Pacientes} />
                 <PrivateRoute path="/agendamentos" exact component={Agendamentos} />
+                <PrivateRoute path="/agendamentos/cadastrar" exact component={AgendamentoCriar} />
                 <PrivateRoute path="/agendamento/alterar" exact component={AgendamentoUpdate} />
-                <PrivateRoute path="/agendamento/realizar" exatct component={AgendamentoConcluir} />
+                <PrivateRoute path="/agendamento/realizar" exact component={AgendamentoConcluir} />
 
                 <Route component={NotFound} />
             </Switch>

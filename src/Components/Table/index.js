@@ -8,9 +8,8 @@ import {
 } from "react-table";
 import { backAxios } from "../../services/api";
 import moment from 'moment'
-import styled from 'styled-components';
 import { useHistory } from "react-router-dom";
-import { toast } from "react-toastify";
+import jwt_decode from 'jwt-decode';
 
 
 // Function for default filters
@@ -105,7 +104,8 @@ function Table({columns, data}) {
           borderColor: "rgba(212,0,84,0.4)",
           textAlign: "center",
           width: "100%",
-          margin: "auto"
+          margin: "auto",
+          fontWeight: 500
         }}
       >
         
@@ -236,36 +236,43 @@ function AppointTable() {
     let history = useHistory()
 
     useEffect(() => {
+        const tokenType = jwt_decode(sessionStorage.getItem('Token')).type
         backAxios.get('/consultas', config)
             .then(res => {
-                setData(res.data.appointments);
+                res.data.appointments.map((apt) => {
+
+                    if (apt.doctorsId == tokenType || tokenType == -1){
+    
+                        setData((oldData) => [...oldData, apt]);
+                    }
+                })
                 
             });
-        
     }, [])
 
     const updateAppointment = async (index) => {
-        setTimeout(() => {console.log('')}, 2000);
+        
         const appointInfo = data[index];
-        console.log(appointInfo)
+        debugger
         const res = await backAxios.get(`/consulta/${appointInfo.uuid}`, config);
             
         history.push({
             pathname: '/agendamento/alterar',
             state: { detail: res.data.appointments },
         });
+
     }
 
     const doAppointment = async (index) => {
         const appointInfo = data[index];
-        console.log(appointInfo)
-        
+    
         const res = await backAxios.get(`/consulta/${appointInfo.uuid}`, config);
-
+        
         history.push({
             pathname: '/agendamento/realizar',
             state: { detail: res.data.appointments}
         });
+        
     }
 
   // Columns array. This array contains your table headings and accessors which maps keys from data array
@@ -293,7 +300,7 @@ function AppointTable() {
             },
             {
                 "id": "columnId_0_00.5502595924803961",
-                "Header": "Dada do Atendimento ",
+                "Header": "Data do Atendimento ",
                 "Footer": "",
                 "accessor": (row) => {
                     return row.appointment_date ? moment.utc(row.appointment_date).format('DD/MM/YYYY\xa0\xa0\xa0HH:mm') : 'Não realizado'
@@ -314,11 +321,13 @@ function AppointTable() {
                 "Cell": ({row}) => {
                     return (
                         <>
-                        <button onClick={() => updateAppointment(row.index)}>Alterar consulta</button>
+                        <button onClick={async () => {updateAppointment(row.index); console.log(data)}} style={{margin: "5px 10px 5px 0"}}>Alterar consulta</button>
                         <button onClick={() => doAppointment(row.index)}>Realizar consulta</button>
                         </>
                     )
-                }
+                },
+                "disableFilters": true
+               
             },
         ]
     }

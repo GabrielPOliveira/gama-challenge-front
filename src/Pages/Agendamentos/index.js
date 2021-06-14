@@ -4,13 +4,18 @@ import FormAgendamento from "../../Components/FormAgendamento"
 import ListAgendamentos from "../../Components/ListAgendamentos";
 import AppointTable from '../../Components/Table'
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 export default function Agendamentos(){
     
     const [isLoad, setIsLoad] = useState(false);
 
+    let history = useHistory();
+
     const openForm = () => {
-        setIsLoad(!isLoad);
+        history.push({
+            pathname: '/agendamentos/cadastrar' 
+        })
     }
 
     return (
@@ -21,19 +26,20 @@ export default function Agendamentos(){
                 <HeadersPrivate />
                 <div class="main-panel">
                     <NaviBar />
-                    {isLoad ?
-                        <FormAgendamento />
-                        :
+                    
                         <div class="content">
                             <div class="container-fluid">
                                 <div class="row">
-                                    <div class="col-md-12">
                                         <button style={{
                                             borderRadius: "12px",
                                             float: "right",
                                             background: "#D40054",
-                                            fontWeight: "bold"
+                                            fontWeight: "bold",
+                                            color: "white",
+                                            marginBottom: "10px",
+                                            marginRight: "15px"
                                         }} onClick={openForm}>Cadastrar novo atendimento</button>
+                                    <div class="col-md-12">
                                         <div class="card strpied-tabled-with-hover">
                                             <div class="card-body  table-responsive">
                                                 <AppointTable />
@@ -44,7 +50,7 @@ export default function Agendamentos(){
 
                             </div>
                         </div>
-                    }
+                    
 
                 </div>
 

@@ -54,7 +54,10 @@ export default function FinishAgendamento(){
         if (res.status === 201){
             toast.success('Consulta realizada com sucesso', {
                 autoClose: 3000
-            })
+            });
+            history.goBack();
+
+            
         } else {
             toast.error('Não foi possível realizar a consulta', {
                 autoClose: 3000
@@ -81,7 +84,7 @@ export default function FinishAgendamento(){
                                 </div>
                             </div>
                             <div id="textBox" style={{textIndent: "10px"}}>
-                                <Editor editorState={editorState} onChange={setEditorState} placeholder="Descreva o caso" />
+                                <Editor editorState={editorState} onChange={setEditorState} placeholder="Descreva o caso..." />
                             </div>
                             <button id="butao" onClick={handleSubmit}>Finalizar</button>
                         </div>

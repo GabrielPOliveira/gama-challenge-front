@@ -76,9 +76,10 @@ export default function UpdateAgendamento() {
 
         if (res.status === 200){
             toast.success('Agendamento alterado com sucesso', {
-                autoClose: 3000
+                onClose: () => {history.goBack()},
+                autoClose: 1500
             });
-            history.goBack();
+            
         } else {
             toast.error('Não foi possível alterar o agendamento', {
                 autoClose: 3000

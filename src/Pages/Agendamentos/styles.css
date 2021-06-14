@@ -20,3 +20,12 @@ div.public-DraftEditor-content {
   color: white;
   font-weight: bold;
 }
+
+#butao2 {
+  margin-top: 10px;
+  margin-right: 10px;
+  float: right;
+  background: rgba(212,0,84, 0.8);
+  color: white;
+  font-weight: bold;
+}

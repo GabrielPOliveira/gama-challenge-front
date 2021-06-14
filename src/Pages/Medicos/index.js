@@ -82,7 +82,7 @@ export default function Medicos() {
                                         />
                                         <div class="card strpied-tabled-with-hover">
                                             <div class="card-header ">
-                                                <h4 class="card-title">Medicos</h4>
+                                                <h4 class="card-title">Médicos</h4>
 
                                                 <button class="btn btn-blue" onClick={openForm}>Cadastrar</button>
                                             </div>

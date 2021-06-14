@@ -1,9 +1,7 @@
 import React from "react";
 import { useHistory, Link } from "react-router-dom";
-
+import jwt_decode from 'jwt-decode';
 import Logo from '../../assets/logoWhite.png';
-
-
 import '../../assets/css/bootstrap.min.css';
 import '../../assets/css/animate.min.css';
 import '../../assets/css/demo.css';
@@ -14,6 +12,8 @@ export default function HeaderPrivate() {
     // JS
     let history = useHistory();
     
+    const tokenType = jwt_decode(sessionStorage.getItem('Token')).type;
+
     return (
         <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
 
@@ -42,10 +42,18 @@ export default function HeaderPrivate() {
                         </a>
                     </li>
                     <li>
-                        <a href="/medicos">
+                        {tokenType == -1 ? (
+                            <a href="/medicos">
                             <i class="pe-7s-users"></i>
                             <p>Gerenciar Médicos</p>
                         </a>
+                        ) : (
+
+                            <>
+                            </>
+                            
+                        )
+                        }
                     </li>
                     <li>
                         <a href="/agendamentos">

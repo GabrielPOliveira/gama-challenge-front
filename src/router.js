@@ -11,7 +11,6 @@ import Sobre from "./Pages/Sobre";
 import Servicos from "./Pages/Servicos";
 import Contato from "./Pages/Contato";
 import Login from "./Pages/Login";
-import LoginPrivado from "./Pages/LoginPrivado";
 // import Cadastro from "./Pages/Cadastro";
 import NotFound from "./Pages/NotFound";
 import Dashboard from "./Pages/Dashboard";
@@ -37,7 +36,6 @@ function Routes() {
                 <Route path="/servicos" exact component={Servicos} />
                 <Route path="/contato" exact component={Contato} />
                 <Route path="/login" exact component={Login} />
-                <Route path="/loginPrivado" exact component={LoginPrivado} />                              
                 <PrivateRoute path="/dashboard" exact component={Dashboard} />
                 <PrivateRoute path="/pacientes" exact component={Pacientes} />
                 <PrivateRoute path="/agendamentos" exact component={Agendamentos} />

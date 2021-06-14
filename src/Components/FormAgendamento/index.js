@@ -69,12 +69,13 @@ export default function FormAgendamento() {
 
         if (res.status === 201) {
 
-            toast.success(`Agendamento realizado com sucesso`, {
+            toast.success(`Agendamento cadastrado com sucesso`, {
+                onClose: () => {history.goBack()},
                 position: "top-center",
-                autoClose: 3000,
+                autoClose: 1500,
                 pauseOnHover: false
             })
-            history.goBack();
+            
         } else {
             toast.error('Não foi possível realizar o agendamento', {
                 position: "top-center",

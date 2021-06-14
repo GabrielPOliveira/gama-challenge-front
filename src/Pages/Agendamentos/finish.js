@@ -86,6 +86,7 @@ export default function FinishAgendamento(){
                                 <Editor editorState={editorState} onChange={setEditorState} placeholder="Descreva o caso..." />
                             </div>
                             <button id="butao" onClick={handleSubmit}>Finalizar</button>
+                            <button id="butao2" onClick={() => {history.goBack()}}>Voltar</button>
                         </div>
                     </div>
                 </div>

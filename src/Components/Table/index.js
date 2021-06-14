@@ -113,7 +113,7 @@ function Table({columns, data}) {
           {headerGroups.map((group) => (
             <tr {...group.getHeaderGroupProps()}>
               {group.headers.map((column) => (
-                <th {...column.getHeaderProps()} style={{textAlign: "center"}}>
+                <th {...column.getHeaderProps()} style={{textAlign: "center", padding: "20px"}}>
                   
                     <div {...column.getSortByToggleProps()}>
                       {column.render("Header")}

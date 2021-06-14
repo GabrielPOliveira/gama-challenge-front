@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import HeadersPrivate from "../../Components/HeaderPrivate";
 import NaviBar from "../../Components/NaviBar";
 import {backAPI} from '../../services/api';
@@ -62,7 +62,7 @@ export default function Prontuario() {
                                 <div class="col-md-12">
                                     <div class="card strpied-tabled-with-hover">
                                                 <div class="card-header ">
-                                                    <h4 class="card-title">Prontuário do Pacientes</h4>
+                                                    <h4 class="card-title">Prontuário do Paciente</h4>
 
                                                     <button class="btn btn-blue" onClick={backListPacientes}>Voltar</button>
                                                 </div>
@@ -91,7 +91,7 @@ export default function Prontuario() {
                                                 </div>
                                             </div>
                                                     <div class="card-header ">
-                                                        <h4 class="card-title">Histórico do Pacientes</h4>                                                                            
+                                                        <h4 class="card-title">Histórico do Paciente</h4>                                                                            
                                                     </div>
                                                     {
                                                         (!prontuario.medicalRecord.MedicalHistories.length == 0) ? 

@@ -42,7 +42,6 @@ export default function UpdateAgendamento() {
     }
 
     const clientName = history.location.state.detail.Client.name
-    const doctorName = history.location.state.detail.Doctor.name
     const uuid = history.location.state.detail.uuid
 
     const validations = Yup.object().shape({

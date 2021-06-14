@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from '../../assets/logo.png';
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import './style.css';
 

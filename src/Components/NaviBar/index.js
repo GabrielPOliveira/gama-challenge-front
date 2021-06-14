@@ -5,7 +5,6 @@ import { Logout } from "../../Utils";
 
 export default function NaviBar() {
     // JS
-    let history = useHistory();
     return (
         <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">

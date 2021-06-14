@@ -1,7 +1,6 @@
 import HeadersPrivate from "../../Components/HeaderPrivate";
 import NaviBar from "../../Components/NaviBar";
 import AppointTable from '../../Components/Table'
-import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 export default function Agendamentos(){

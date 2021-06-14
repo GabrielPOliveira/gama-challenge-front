@@ -4,7 +4,6 @@ import {
   ,useSortBy
   ,usePagination
   ,useFilters
-  ,useAsyncDebounce
 } from "react-table";
 import { backAPI } from "../../services/api";
 import moment from 'moment'
@@ -16,7 +15,6 @@ import jwt_decode from 'jwt-decode';
 function DefaultColumnFilter({
   column: { filterValue, preFilteredRows, setFilter }
 }) {
-  const count = preFilteredRows.length;
 
   return (
     <input style={{border: 0 }}
@@ -66,7 +64,6 @@ function Table({columns, data}) {
     getTableBodyProps,
     headerGroups,
     footerGroups,
-    rows,
     prepareRow,
     page,
     canPreviousPage,
@@ -78,7 +75,6 @@ function Table({columns, data}) {
     previousPage,
     setPageSize,
     state: { pageIndex, pageSize },
-    visibleColumns,
     
   } = useTable(
     {

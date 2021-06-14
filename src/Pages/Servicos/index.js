@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 import Bar from "../../Components/Bar";
@@ -8,13 +8,12 @@ import imgNurse1 from '../../assets/nurse3.png';
 
 export default function Servicos() {
     // JS
-    let history = useHistory();
     return (
         <div>
             <Header />
             <section className="flex spaceSections recuo">
                 <div className="half">
-                    <h1>Os nossos serviços</h1>
+                    <h1>Alguns de nossos serviços</h1>
                     <Bar />
                     <ul>
                         <li>Médico Veterinário (Veterinário)</li>

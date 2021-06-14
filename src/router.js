@@ -25,6 +25,7 @@ import Medicos from "./Pages/Medicos";
 import MedicosCreate from "./Pages/Medicos/create";
 import MedicosUpdate from "./Pages/Medicos/update";
 import PrivateRoute from "./Components/PrivateRoute";
+import Perfil from "./Pages/Perfil";
 
 function Routes() {
     // JS de rotas privadas e JWT
@@ -37,6 +38,7 @@ function Routes() {
                 <Route path="/contato" exact component={Contato} />
                 <Route path="/login" exact component={Login} />
                 <PrivateRoute path="/dashboard" exact component={Dashboard} />
+                <PrivateRoute path="/perfil" exact component={Perfil} />
                 <PrivateRoute path="/pacientes" exact component={Pacientes} />
                 <PrivateRoute path="/agendamentos" exact component={Agendamentos} />
                 <PrivateRoute path="/agendamentos/cadastrar" exact component={AgendamentoCriar} />

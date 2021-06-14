@@ -1,13 +1,10 @@
 import React, {useState, useEffect} from "react";
 import { ErrorMessage, Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import { useHistory, Link } from "react-router-dom";
 import {backAPI, viacepAPI} from '../../services/api';
 import { toast } from "react-toastify";
 
 export default function FormPacientes() {
-
-    let history = useHistory();
    
     const token = sessionStorage.getItem("Token");  
 

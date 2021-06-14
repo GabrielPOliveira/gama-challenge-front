@@ -1,15 +1,10 @@
 import HeadersPrivate from "../../Components/HeaderPrivate";
 import NaviBar from "../../Components/NaviBar";
-import FormAgendamento from "../../Components/FormAgendamento"
-import ListAgendamentos from "../../Components/ListAgendamentos";
 import AppointTable from '../../Components/Table'
-import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 export default function Agendamentos(){
     
-    const [isLoad, setIsLoad] = useState(false);
-
     let history = useHistory();
 
     const openForm = () => {

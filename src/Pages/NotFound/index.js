@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 import Bar from "../../Components/Bar";
@@ -8,7 +8,6 @@ import "./style.css";
 
 export default function NotFound() {
     // JS
-    let history = useHistory();
     return (
         <div>
             <Header />

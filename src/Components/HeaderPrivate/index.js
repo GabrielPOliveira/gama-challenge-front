@@ -42,9 +42,9 @@ export default function HeaderPrivate() {
                         </a>
                     </li>
                     <li>
-                        <a href="typography.html">
+                        <a href="/medicos">
                             <i class="pe-7s-users"></i>
-                            <p>Gerenciar Medicos</p>
+                            <p>Gerenciar Médicos</p>
                         </a>
                     </li>
                     <li>

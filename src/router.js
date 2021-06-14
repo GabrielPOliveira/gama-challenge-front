@@ -20,7 +20,11 @@ import Agendamentos from "./Pages/Agendamentos"
 import AgendamentoUpdate from "./Pages/Agendamentos/update";
 import AgendamentoConcluir from './Pages/Agendamentos/finish'
 import AgendamentoCriar from "./Pages/Agendamentos/create";
-
+import PacienteUpdate from "./Pages/Pacientes/update";
+import PacienteProntuario from "./Pages/Pacientes/prontuario";
+import Medicos from "./Pages/Medicos";
+import MedicosCreate from "./Pages/Medicos/create";
+import MedicosUpdate from "./Pages/Medicos/update";
 import PrivateRoute from "./Components/PrivateRoute";
 
 function Routes() {
@@ -33,15 +37,18 @@ function Routes() {
                 <Route path="/servicos" exact component={Servicos} />
                 <Route path="/contato" exact component={Contato} />
                 <Route path="/login" exact component={Login} />
-                <Route path="/loginPrivado" exact component={LoginPrivado} />
-                              
+                <Route path="/loginPrivado" exact component={LoginPrivado} />                              
                 <PrivateRoute path="/dashboard" exact component={Dashboard} />
                 <PrivateRoute path="/pacientes" exact component={Pacientes} />
                 <PrivateRoute path="/agendamentos" exact component={Agendamentos} />
                 <PrivateRoute path="/agendamentos/cadastrar" exact component={AgendamentoCriar} />
                 <PrivateRoute path="/agendamento/alterar" exact component={AgendamentoUpdate} />
                 <PrivateRoute path="/agendamento/realizar" exact component={AgendamentoConcluir} />
-
+                <PrivateRoute path="/paciente/alterar" exact component={PacienteUpdate} />
+                <PrivateRoute path="/paciente/prontuario" exact component={PacienteProntuario} />
+                <PrivateRoute path="/medicos" exact component={Medicos} />
+                <PrivateRoute path="/medico/criar" exact component={MedicosCreate} />
+                <PrivateRoute path="/medico/alterar" exact component={MedicosUpdate} />
                 <Route component={NotFound} />
             </Switch>
         </Router>

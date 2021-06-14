@@ -101,7 +101,7 @@ function Table({columns, data}) {
           textAlign: "center",
           width: "100%",
           margin: "auto",
-          fontWeight: 500
+          fontWeight: 600
         }}
       >
         
@@ -109,7 +109,7 @@ function Table({columns, data}) {
           {headerGroups.map((group) => (
             <tr {...group.getHeaderGroupProps()}>
               {group.headers.map((column) => (
-                <th {...column.getHeaderProps()} style={{textAlign: "center", padding: "20px"}}>
+                <th {...column.getHeaderProps()} style={{textAlign: "center", padding: "15px"}}>
                   
                     <div {...column.getSortByToggleProps()}>
                       {column.render("Header")}
@@ -314,7 +314,14 @@ function AppointTable() {
                     return (
                         <>
                         <button onClick={async () => {updateAppointment(row.original)}} style={{margin: "5px 10px 5px 0"}}>Alterar consulta</button>
-                        <button onClick={() => doAppointment(row.original)}>Realizar consulta</button>
+
+                        {row.original.appointments_statusId == 2 | row.original.appointments_statusId == 3 ? (
+                            <button style={{textDecoration: "line-through"}} disabled>Realizar consulta</button>
+
+                        ) : (
+                          <button onClick={() => {doAppointment(row.original); console.log(row.original)}}>Realizar consulta</button>
+                          )
+                      }
                         </>
                     )
                 },

@@ -25,19 +25,18 @@ export default function Agendamentos(){
                         <div class="content">
                             <div class="container-fluid">
                                 <div class="row">
-                                        <button style={{
-                                            borderRadius: "12px",
-                                            float: "right",
-                                            background: "#D40054",
-                                            fontWeight: "bold",
-                                            color: "white",
-                                            marginBottom: "10px",
-                                            marginRight: "15px"
-                                        }} onClick={openForm}>Cadastrar novo atendimento</button>
                                     <div class="col-md-12">
                                         <div class="card strpied-tabled-with-hover">
                                             <div class="card-body  table-responsive">
                                                 <AppointTable />
+                                                <button style={{
+                                                    borderRadius: "12px",
+                                                    float: "right",
+                                                    background: "#D40054",
+                                                    fontWeight: "bold",
+                                                    color: "white",
+                                                    marginTop: "25px"
+                                                }} onClick={openForm}>Cadastrar novo atendimento</button>
                                             </div>
                                         </div>
                                     </div>

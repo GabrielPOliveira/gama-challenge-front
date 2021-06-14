@@ -57,7 +57,7 @@ export default function MedicosUpdate() {
     const handleSubmit = values => {
         values.register = values.register.toUpperCase();
 
-        alert(JSON.stringify(values));
+        
         let uuid = history.location.state.detail.uuid;
         
         backAPI.put(`/medicos/${uuid}`, values, config).then(

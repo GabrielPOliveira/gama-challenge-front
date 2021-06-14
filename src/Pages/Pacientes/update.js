@@ -54,7 +54,7 @@ export default function FormPacientesUpdate() {
     });
     
     const handleSubmit = values => {
-        alert(JSON.stringify(values));
+        
         let uuid = history.location.state.detail.uuid;
         
         backAPI.put(`/clientes/${uuid}`, values, config).then(

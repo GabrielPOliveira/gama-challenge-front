@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, Link } from "react-router-dom";
-import { backAxios } from "../../services/api";
+import { backAPI } from "../../services/api";
 import moment from 'moment-timezone';
 
 export default function ListAgendamentos() {
@@ -8,7 +8,7 @@ export default function ListAgendamentos() {
     const [list, setList] = useState({ dataAppoint: [] });
 
     useEffect(() => {
-        backAxios.get('/consultas', {headers: {Authorization: `Bearer ${sessionStorage.getItem('Token')}`}})
+        backAPI.get('/consultas', {headers: {Authorization: `Bearer ${sessionStorage.getItem('Token')}`}})
             .then(response => {
                 console.log(response.data.appointments)
                 setList({dataAppoint: response.data.appointments})

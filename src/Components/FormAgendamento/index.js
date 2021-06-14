@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router";
-import { backAxios } from '../../services/api'
+import { backAPI } from '../../services/api'
 import { ErrorMessage, Form, Formik, Field } from 'formik'
 import * as Yup from 'yup'
 import { toast } from "react-toastify";
@@ -17,12 +17,12 @@ export default function FormAgendamento() {
     const [docId, setDocId] = useState(0)
 
     useEffect(() => {
-        backAxios.get('/clientes', { headers: { Authorization: `Bearer ${sessionStorage.getItem('Token')}` } })
+        backAPI.get('/clientes', { headers: { Authorization: `Bearer ${sessionStorage.getItem('Token')}` } })
         .then(response => {
             setClient({ dataClient: response.data });
         });
         
-        backAxios.get('/medicos', { headers: { Authorization: `Bearer ${sessionStorage.getItem('Token')}` } })
+        backAPI.get('/medicos', { headers: { Authorization: `Bearer ${sessionStorage.getItem('Token')}` } })
         .then(response => {
             setDoctor({ dataDoctor: response.data });
             
@@ -62,7 +62,7 @@ export default function FormAgendamento() {
 
         console.log(dataAppoint);
 
-        const res = await backAxios.post('/agendarConsulta', dataAppoint, { headers: { Authorization: `Bearer ${sessionStorage.getItem('Token')}` } });
+        const res = await backAPI.post('/agendarConsulta', dataAppoint, { headers: { Authorization: `Bearer ${sessionStorage.getItem('Token')}` } });
 
         setClient({dataClient: []});
         setDoctor({dataDoctor: []});

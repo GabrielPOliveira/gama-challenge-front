@@ -6,7 +6,7 @@ import {
   ,useFilters
   ,useAsyncDebounce
 } from "react-table";
-import { backAxios } from "../../services/api";
+import { backAPI } from "../../services/api";
 import moment from 'moment'
 import { useHistory } from "react-router-dom";
 import jwt_decode from 'jwt-decode';
@@ -237,7 +237,7 @@ function AppointTable() {
 
     useEffect(() => {
         const tokenType = jwt_decode(sessionStorage.getItem('Token')).type
-        backAxios.get('/consultas', config)
+        backAPI.get('/consultas', config)
             .then(res => {
                 res.data.appointments.map((apt) => {
 
@@ -253,8 +253,8 @@ function AppointTable() {
     const updateAppointment = async (index) => {
         
         const appointInfo = data[index];
-        debugger
-        const res = await backAxios.get(`/consulta/${appointInfo.uuid}`, config);
+        
+        const res = await backAPI.get(`/consulta/${appointInfo.uuid}`, config);
             
         history.push({
             pathname: '/agendamento/alterar',
@@ -266,7 +266,7 @@ function AppointTable() {
     const doAppointment = async (index) => {
         const appointInfo = data[index];
     
-        const res = await backAxios.get(`/consulta/${appointInfo.uuid}`, config);
+        const res = await backAPI.get(`/consulta/${appointInfo.uuid}`, config);
         
         history.push({
             pathname: '/agendamento/realizar',

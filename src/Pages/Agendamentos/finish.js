@@ -6,7 +6,7 @@ import HeadersPrivate from "../../Components/HeaderPrivate";
 import NaviBar from "../../Components/NaviBar";
 import './styles.css'
 import moment from "moment";
-import { backAxios } from "../../services/api";
+import { backAPI } from "../../services/api";
 import { toast } from "react-toastify";
 
 
@@ -47,7 +47,7 @@ export default function FinishAgendamento(){
 
         console.log(endAppoint)
 
-        const res = await backAxios.post(`/realizarConsulta/${uuid}`, endAppoint, config);
+        const res = await backAPI.post(`/realizarConsulta/${uuid}`, endAppoint, config);
 
         console.log(res)
 

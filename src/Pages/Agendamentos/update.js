@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom"
 import * as Yup from 'yup'
 import { ErrorMessage, Formik, Form, Field } from 'formik';
 import { toast } from "react-toastify";
-import { backAxios } from "../../services/api";
+import { backAPI } from "../../services/api";
 import HeadersPrivate from '../../Components/HeaderPrivate'
 import NaviBar from '../../Components/NaviBar'
 import moment from "moment";
@@ -16,12 +16,12 @@ export default function UpdateAgendamento() {
     const [doctor, setDoctor] = useState({ dataDoctor: [] });
 
     useEffect(() => {
-        backAxios.get('/clientes', { headers: { Authorization: `Bearer ${sessionStorage.getItem('Token')}` } })
+        backAPI.get('/clientes', { headers: { Authorization: `Bearer ${sessionStorage.getItem('Token')}` } })
             .then(response => {
                 setClient({ dataClient: response.data });
             });
 
-        backAxios.get('/medicos', { headers: { Authorization: `Bearer ${sessionStorage.getItem('Token')}` } })
+        backAPI.get('/medicos', { headers: { Authorization: `Bearer ${sessionStorage.getItem('Token')}` } })
             .then(response => {
                 setDoctor({ dataDoctor: response.data });
             })
@@ -72,7 +72,7 @@ export default function UpdateAgendamento() {
 
         console.log(updateAppoint)
 
-        const res = await backAxios.put(`/alterarConsulta/${uuid}`, updateAppoint, config);
+        const res = await backAPI.put(`/alterarConsulta/${uuid}`, updateAppoint, config);
 
         if (res.status === 200){
             toast.success('Agendamento alterado com sucesso', {

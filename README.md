@@ -42,7 +42,7 @@ yarn start
 
 ### Gestão de Pacientes
 
-<img src="pacientes.gif"/>
+<img src="Pacientes.gif"/>
 
 ------------------------
 ### Gestão de Médicos

@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { useHistory, Link } from "react-router-dom";
-import Footer from "../../Components/Footer";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import HeadersPrivate from "../../Components/HeaderPrivate";
 import NaviBar from "../../Components/NaviBar";
 import { backAPI } from '../../services/api';

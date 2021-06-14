@@ -1,5 +1,4 @@
 import React from "react";
-import { useHistory, Link } from "react-router-dom";
 import jwt_decode from 'jwt-decode';
 import Logo from '../../assets/logoWhite.png';
 import '../../assets/css/bootstrap.min.css';
@@ -9,9 +8,7 @@ import '../../assets/css/light-bootstrap-dashboard.css';
 import '../../assets/css/pe-icon-7-stroke.css';
 
 export default function HeaderPrivate() {
-    // JS
-    let history = useHistory();
-    
+    // JS    
     const tokenType = jwt_decode(sessionStorage.getItem('Token')).type;
 
     return (

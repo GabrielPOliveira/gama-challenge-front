@@ -5,3 +5,19 @@
 #root > div > section > div > form{
     margin-bottom: 8vw;
 }
+
+#root > div:nth-child(1) > section > div > form > a{
+    margin-right: 1vw;
+}
+
+.card-header{
+    text-align: end;
+}
+
+#pass{
+    margin-bottom: 1vw;
+}
+
+button.entrarHeader{
+    font-weight: bold;
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 import Bar from "../../Components/Bar";
@@ -8,7 +8,6 @@ import imgNurse1 from '../../assets/nurse2.png';
 
 export default function Sobre() {
     // JS
-    let history = useHistory();
     return (
         <div>
             <Header />
@@ -17,7 +16,7 @@ export default function Sobre() {
                     <h1>Sobre a Afya Medical Group</h1>
                     <Bar />
                     <p>Inovando enquanto ajuda pessoas no tratamento de doenças e patologias.</p>
-                    <Link to="/cadastro" className="buttonA">Cadastro</Link>
+                    <Link to="/contato" className="buttonA">Contato</Link>
                 </div>
                 <img src={imgNurse1} alt="Ícone de enfermeira com um cadeirante." className="imgPages" />
             </section>

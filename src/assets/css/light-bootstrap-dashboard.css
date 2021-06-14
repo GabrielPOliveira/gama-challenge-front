@@ -206,6 +206,7 @@ input:focus {
     -o-transition: all 100ms ease-in;
     -ms-transition: all 100ms ease-in;
     transition: all 100ms ease-in;
+    margin: .3vw;
 }
 
 .fa {
@@ -309,6 +310,7 @@ input:focus {
 .sidebar .nav li:hover > a {
     background-color: rgba(255, 255, 255, 0.13);
     opacity: 1;
+    width: 100%;
 }
 
 .sidebar .nav li > a {
@@ -322,7 +324,6 @@ input:focus {
 .sidebar .nav li.active > a {
     color: #FFFFFF;
     opacity: 1;
-    background: rgba(255, 255, 255, 0.23);
 }
 
 .sidebar .nav li.separator {
@@ -3829,4 +3830,25 @@ fieldset[disabled] .btn-neutral.active {
         -ms-overflow-style: -ms-autohiding-scrollbar;
         -webkit-overflow-scrolling: touch;
     }
+}
+
+.card-title{
+    padding: .5vw 0 0 2vw;
+    margin-top: unset;
+}
+
+.btn-blue{
+    margin: 0 2vw 0;
+}
+
+.card form [class*="col-"], .card-title{
+    text-align: start;
+}
+
+.card{
+    padding: 1vw;
+}
+
+.btn-info.btn-fill, .card{
+    margin-top: 2vw;
 }

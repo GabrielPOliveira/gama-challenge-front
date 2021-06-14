@@ -1,4 +1,14 @@
 import React from "react";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 import Routes from "./router";
 
-export const App = () => <Routes />;
+export const App = () => {
+
+    return(
+        <>
+            <Routes />;
+            <ToastContainer />
+        </>
+    )
+}

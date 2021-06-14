@@ -3,6 +3,7 @@ import { useHistory, Link } from "react-router-dom";
 import HeadersPrivate from "../../Components/HeaderPrivate";
 import NaviBar from "../../Components/NaviBar";
 import {backAPI} from '../../services/api';
+import moment from "moment";
 
 
 export default function Prontuario() { 
@@ -14,23 +15,11 @@ export default function Prontuario() {
         headers: { Authorization: `Bearer ${token}` }
     }
 
-    // const [paciente, setPacientes] = useState([])
-
-    const [medicos, setMedicos] = useState([])
-
+ 
 
     const prontuario = history.location.state.detail;
+    const medicos = history.location.state.medicos;
     const uuidPaciente = history.location.state.uuidPaciente;
-
-    // console.log(prontuario.medicalRecord.MedicalHistories);
-    // console.log(paciente.data.BloodType.type);
-
-    // const initialValues = {       
-    //     name: paciente.name,
-    //     cpf: paciente.cpf,       
-    //     bloodtype: paciente.data.BloodType.type,
-    //     opening_date: prontuario.medicalRecord.opening_date,              
-    // }
 
     const initialValues = {   
         name: "",
@@ -50,26 +39,10 @@ export default function Prontuario() {
         backAPI.get(`/cliente/${uuidPaciente}`, config).then(
             response => {
                 // setPacientes({data: response.data});
-                setDataProntuario({name: response.data.name, cpf: response.data.cpf, bloodtype: response.data.BloodType.type})
-                console.log(prontuario);
+                setDataProntuario({name: response.data.name, cpf: response.data.cpf, bloodtype: response.data.BloodType.type})               
             }
         )
 
-        backAPI.get(`/medicos`, config).then(
-            response => {
-                setMedicos({data: response.data});
-
-                // medicos.data.map(medico => {
-                //     console.log(medico.id);
-                //     if(medico.id == )
-                // })
-                                
-                console.log(medicos.data);
-            }
-        )
-            // if(!prontuario.medicalRecord.MedicalHistories.length == 0){
-            //    alert('TESTE');
-            // }
     }, []);
     
     function backListPacientes(){      
@@ -97,46 +70,55 @@ export default function Prontuario() {
                                                     <div class="row">
                                                         <div class="col-md-6"> 
                                                             <label for="name" class="">Nome</label>                                                  
-                                                            <input value={dataProntuario.name} name="name" id="name" type="text" className="form-control" disable/> 
+                                                            <input value={dataProntuario.name} name="name" id="name" type="text" className="form-control" disabled/> 
                                                         </div>
                                                         <div class="col-md-6"> 
                                                             <label for="cpf" class="">CPF</label>
-                                                            <input value={dataProntuario.cpf} name="cpf" id="cpf" type="text" maxlength="11" className="form-control"/>
+                                                            <input value={dataProntuario.cpf} name="cpf" id="cpf" type="text" maxlength="11" className="form-control" disabled/>
                                                         </div>
                                                     </div>
 
                                                     <div class="row">
                                                         <div class="col-md-6"> 
                                                             <label for="opening_date" class="">Data de Abertura do Prontuário</label>                                                  
-                                                            <input value={dataProntuario.opening_date} name="opening_date" id="opening_date" type="text" className="form-control" disable/> 
+                                                            <input value={moment(dataProntuario.opening_date).format('DD/MM/YYYY')} name="opening_date" id="opening_date" type="text" className="form-control" disabled/> 
                                                         </div>
                                                         <div class="col-md-6"> 
                                                         <label for="opening_date" class="">Tipo Sanguíneo</label>                                                  
-                                                            <input value={dataProntuario.bloodtype} name="opening_date" id="opening_date" type="text" className="form-control" disable/> 
+                                                            <input value={dataProntuario.bloodtype} name="opening_date" id="opening_date" type="text" className="form-control" disabled/> 
                                                         </div>
                                                     </div>
-                                                
+                                                </div>
+                                            </div>
+                                                    <div class="card-header ">
+                                                        <h4 class="card-title">Histórico do Pacientes</h4>                                                                            
+                                                    </div>
                                                     {
                                                         (!prontuario.medicalRecord.MedicalHistories.length == 0) ? 
                                                         (
                                                             
                                                             prontuario.medicalRecord.MedicalHistories.map(item =>{
+                                                               
+                                                                let aux = medicos.find(val => val.id == item.doctorsId)
+                                                                                                                              
                                                                 return(
-                                                                    <div> 
+                                                                    
+                                                                    <div className="card strpied-tabled-with-hover"> 
+                                                                       
                                                                         <div class="row">
                                                                                 <div class="col-md-6"> 
-                                                                                    <label for="opening_date" class="">Data</label>                                                  
-                                                                                    <input value={dataProntuario.opening_date} name="opening_date" id="opening_date" type="text" className="form-control" disable/> 
+                                                                                    <label for="date" class="">Data</label>                                                  
+                                                                                    <input value={moment.utc(item.date).format('DD/MM/YYYY\xa0\xa0\xa0HH:mm')} name="date" id="date" type="text" className="form-control" disabled /> 
                                                                                 </div>
                                                                                 <div class="col-md-6"> 
                                                                                     <label for="opening_date" class="">Nome do médico</label>                                                  
-                                                                                    <input value={dataProntuario.opening_date} name="opening_date" id="opening_date" type="text" className="form-control" disable/> 
+                                                                                    <input value={aux.name} name="opening_date" id="opening_date" type="text" className="form-control" disabled/> 
                                                                                 </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-md-12"> 
-                                                                                <label for="opening_date" class="">Descrição</label>                                                  
-                                                                                <input value={dataProntuario.opening_date} name="opening_date" id="opening_date" type="text" className="form-control" disable/> 
+                                                                                <label for="description" class="">Descrição</label>                                                  
+                                                                                <textarea value={item.description} style={{height: '150px'}} name="description" id="description" type="text" className="form-control" disabled/> 
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -144,37 +126,17 @@ export default function Prontuario() {
                                                             })
 
                                                         ) : (
-                                                                <div> 
-                                                                     <div class="row">
-                                                                                <div class="col-md-6"> 
-                                                                                    <label for="opening_date" class="">Data</label>                                                  
-                                                                                    <input value={dataProntuario.opening_date} name="opening_date" id="opening_date" type="text" className="form-control" disable/> 
-                                                                                </div>
-                                                                                <div class="col-md-6"> 
-                                                                                    <label for="opening_date" class="">Nome do médico</label>                                                  
-                                                                                    <input value={dataProntuario.opening_date} name="opening_date" id="opening_date" type="text" className="form-control" disable/> 
-                                                                                </div>
-                                                                        </div>
+                                                                <div className="card strpied-tabled-with-hover"> 
+                                                                  
                                                                     <div class="row">
                                                                             <div class="col-md-12"> 
-                                                                                <label for="opening_date" class="">Descrição</label>                                                  
-                                                                                <input value={dataProntuario.opening_date} name="opening_date" id="opening_date" type="text" className="form-control" disable/> 
+                                                                                <p>O Paciente ainda não possui histórico médico</p>
                                                                             </div>
                                                                     </div>
                                                                     
                                                                 </div>
                                                         )
-                                                    }
-                                                    
-
-                                                </div>
-
-
-                                                
-                                    </div>
-
-
-
+                                                    }                                                                                                                                                                                        
                                 </div>
                             </div>
                         </div>

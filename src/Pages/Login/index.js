@@ -26,7 +26,10 @@ export default function Login(props) {
             password: user.password
         }
 
+
+
         const res = await backAPI.post('/logar', creds);
+
     
         if (res.status === 200){
             sessionStorage.setItem("Token", res.data.token);

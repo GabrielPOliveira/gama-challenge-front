@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory, Link } from "react-router-dom";
+import { Logout } from "../../Utils";
 
 
 export default function NaviBar() {
@@ -21,7 +22,7 @@ export default function NaviBar() {
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <Link to="/">Sair</Link>
+                            <Link to="/" onClick={Logout}>Sair</Link>
                         </li>
                         <li class="separator hidden-lg"></li>
                     </ul>

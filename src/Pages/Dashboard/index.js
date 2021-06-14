@@ -20,11 +20,12 @@ export default function Dash() {
                 <div class="main-panel">
                 <NaviBar />
                     
-
                     <div class="content center">
                         <h1>Bem-vindo</h1>
                         <div>
                             <p></p>
+
+
                         </div>
                     </div>
 

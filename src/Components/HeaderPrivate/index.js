@@ -48,7 +48,7 @@ export default function HeaderPrivate() {
                         </a>
                     </li>
                     <li>
-                        <a href="icons.html">
+                        <a href="/agendamentos">
                             <i class="pe-7s-date"></i>
                             <p>Agendamentos</p>
                         </a>

@@ -30,7 +30,7 @@ export default function HeaderPrivate() {
                         </a>
                     </li>
                     <li>
-                        <a href="user.html">
+                        <a href="/perfil">
                             <i class="pe-7s-user"></i>
                             <p>Perfil</p>
                         </a>

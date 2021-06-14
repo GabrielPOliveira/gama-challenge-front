@@ -26,10 +26,7 @@ export default function Login(props) {
             password: user.password
         }
 
-
-
         const res = await backAPI.post('/logar', creds);
-
     
         if (res.status === 200){
             sessionStorage.setItem("Token", res.data.token);
@@ -41,7 +38,7 @@ export default function Login(props) {
                 pauseOnHover: false
             })
         } else {
-            toast.error(res.data.error, {
+            toast.error('Usuário ou senha incorretos', {
                 position: "top-center",
                 autoClose: 3000,
                 pauseOnHover: false

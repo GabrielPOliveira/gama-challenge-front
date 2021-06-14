@@ -35,7 +35,9 @@ p {
 }
 
 .buttonA:hover {
-    background: #A60043;
+    background: #fff;
+    border: 1px solid #d40054;
+    color: #d40054;
 }
 
 .buttonA {
@@ -43,7 +45,7 @@ p {
     background: #d40054;
     color: #fff;
     padding: 1vw 2vw;
-    border: unset;
+    border: transparent 1px solid;
     border-radius: 50vw;
     font-weight: bold;
     font-size: 1.2vw;

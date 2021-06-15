@@ -64,3 +64,11 @@ yarn start
 * **Desenvolvedor** - *Agendamentos, Meu Perfil,* - [Bruno Vercelli](https://github.com/bjmvercelli)
 
 * **Desenvolvedor** - *Gestão de Médicos, Gestão de Pacientes e Documentação,* - [Gabriel P Oliveira](https://github.com/GabrielPOliveira/)
+
+------------------------
+## Link para acesso ao sistema
+
+[Front-end](https://labteam-front.herokuapp.com/)
+
+Dados para acesso: login = administrator  e senha admin123
+
